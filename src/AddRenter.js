@@ -12,7 +12,7 @@ class AddRenter extends Component {
 
     this.props.onAdd(this.nameInput.value, this.adressInput.value, this.phoneInput.value);
 
-    //cleaing the input
+    //cleaing the input after adding the product
     this.nameInput.value = "";
     this.adressInput.value = "";
     this.phoneInput.value = "";

@@ -34,6 +34,7 @@ class App extends Component {
 
     this.onAdd = this.onAdd.bind(this);
     this.onDelete = this.onDelete.bind(this);
+    this.onEditSubmit = this.onEditSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -68,6 +69,23 @@ class App extends Component {
     this.setState({renters: filteredRenters});
   }
 
+  onEditSubmit(name, adress, phone, originalName) {
+    //console.log(name, adress, phone);
+    let renters = this.getRenters();
+
+    renters = renters.map(renter => {
+      if (renter.name === originalName) {
+        renter.name = name;
+        renter.adress = adress;
+        renter.phone = phone;
+      }
+
+      return renter;
+    });
+    
+    this.setState({renters});
+  }
+
   render() {
     return (
       <div className="App">
@@ -85,6 +103,7 @@ class App extends Component {
                   adress = {renter.adress}
                   phone = {renter.phone}
                   onDelete = {this.onDelete}
+                  onEditSubmit = {this.onEditSubmit}
                 />
               );
             })
