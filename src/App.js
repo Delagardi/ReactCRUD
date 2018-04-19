@@ -21,6 +21,7 @@ const renters = [
   }
 ];
 
+//initiate DB
 localStorage.setItem("rentersItem", JSON.stringify(renters))
 
 class App extends Component {
@@ -31,8 +32,8 @@ class App extends Component {
       renters: JSON.parse(localStorage.getItem("rentersItem"))
     };
 
-    this.onDelete = this.onDelete.bind(this);
     this.onAdd = this.onAdd.bind(this);
+    this.onDelete = this.onDelete.bind(this);
   }
 
   componentWillMount() {
@@ -45,16 +46,6 @@ class App extends Component {
     return this.state.renters;
   }
 
-  onDelete(name) {
-    const renters = this.getRenters();
-
-    const filteredRenters = renters.filter(renter => {
-      return renter.name !== name;
-    });
-
-    this.setState({renters: filteredRenters});
-  }
-
   onAdd(name, adress, phone) {
     const renters = this.getRenters();
 
@@ -63,8 +54,18 @@ class App extends Component {
       adress,
       phone
     });
-    console.log(name, adress, phone);
-    this.setState = ({renters});
+
+    this.setState({renters});
+  }
+
+  onDelete(name) {
+    const renters = this.getRenters();
+
+    const filteredRenters = renters.filter(renter => {
+      return renter.name !== name;
+    });
+
+    this.setState({renters: filteredRenters});
   }
 
   render() {
