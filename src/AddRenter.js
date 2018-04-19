@@ -11,6 +11,11 @@ class AddRenter extends Component {
     event.preventDefault(); //prevent page from refreshing
 
     this.props.onAdd(this.nameInput.value, this.adressInput.value, this.phoneInput.value);
+
+    //cleaing the input
+    this.nameInput.value = "";
+    this.adressInput.value = "";
+    this.phoneInput.value = "";
   }
 
   render() {
